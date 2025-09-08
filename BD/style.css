@@ -1,0 +1,175 @@
+:root{
+  --bg:#fcfcff;
+  --card:#ffffff;
+  --text:#222;
+  --accent:#ff3366;
+  --muted:#666;
+  --primary:#2b7cff;
+  --danger:#e74c3c;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+}
+
+/* page container */
+.page{
+  width:100%;
+  max-width:720px;
+}
+
+/* header */
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px;
+}
+.header h1{margin:0; font-size:1.2rem}
+#themeToggle{
+  background:transparent;
+  border:1px solid rgba(0,0,0,0.08);
+  padding:6px 10px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* card */
+.card{
+  background:var(--card);
+  border-radius:14px;
+  padding:18px;
+  box-shadow: 0 6px 22px rgba(20,20,40,0.06);
+  margin-bottom:12px;
+}
+
+.hidden{display:none}
+
+/* form */
+form{display:flex; flex-direction:column; gap:8px}
+input[type="text"]{
+  padding:10px 12px;
+  border-radius:8px;
+  border:1px solid #e6e6e9;
+  font-size:1rem;
+}
+.row{display:flex; gap:8px; justify-content:flex-end}
+button{padding:8px 14px; border-radius:9px; border:0; cursor:pointer; font-weight:600}
+button.primary{background:var(--primary); color:#fff}
+button.secondary{background:transparent; border:1px solid rgba(0,0,0,0.08)}
+small.error{color:var(--danger); font-size:0.85rem}
+
+/* QUESTION area */
+.question-title{
+  text-align:center;
+  margin-bottom:12px;
+  font-size:1.1rem;
+}
+.button-area{
+  position:relative;
+  height:140px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.btn-yes, .btn-no{
+  padding:12px 18px;
+  border-radius:10px;
+  font-size:1.05rem;
+  font-weight:700;
+  border:0;
+  cursor:pointer;
+  position:absolute;
+  transition: transform .18s ease, left .28s ease, top .28s ease;
+  -webkit-user-select:none;
+  user-select:none;
+  touch-action:manipulation;
+}
+
+/* yes styling */
+.btn-yes{
+  background:linear-gradient(90deg,#ff6b8a,#ff9ab9);
+  color:white;
+  box-shadow: 0 8px 18px rgba(255,80,120,0.18), inset 0 -4px 10px rgba(0,0,0,0.06);
+}
+.btn-yes:active{transform:scale(.98)}
+
+/* no styling (sneaky) */
+.btn-no{
+  background:linear-gradient(90deg,#ddd,#fff);
+  color:var(--text);
+  border:1px solid #d6d6d8;
+}
+
+/* give them initial positions */
+.btn-yes{ left:20%; top:30% }
+.btn-no{ left:62%; top:30% }
+
+/* small caption */
+.small-muted{color:var(--muted); font-size:0.9rem; text-align:center; margin-top:8px}
+
+/* hearts animation */
+#heartsContainer{
+  position:fixed;
+  left:0;
+  top:0;
+  pointer-events:none;
+  width:100%;
+  height:100%;
+  overflow:visible;
+  z-index:9999;
+}
+.heart{
+  position:absolute;
+  width:28px;
+  height:28px;
+  transform-origin:center;
+  opacity:0;
+  animation: floatUp 1600ms forwards;
+  display:inline-block;
+  will-change:transform, opacity;
+}
+/* simple heart using ::before/::after */
+.heart::before, .heart::after{
+  content:"";
+  position:absolute;
+  width:14px; height:22px;
+  background:var(--accent);
+  border-radius:14px 14px 0 0;
+  transform:rotate(-45deg);
+  top:0;
+  left:0;
+}
+.heart::after{
+  transform:rotate(45deg);
+  left:14px;
+}
+
+/* hearts floating keyframes */
+@keyframes floatUp{
+  0%{ transform: translateY(0) scale(.9) rotate(-10deg); opacity:1}
+  70%{ opacity:1}
+  100%{ transform: translateY(-240px) scale(1.4) rotate(18deg); opacity:0}
+}
+
+/* dark mode */
+.dark-mode{
+  --bg: #0f1222;
+  --card: #0d1626;
+  --text:#f3f4f6;
+  --muted:#9aa4b2;
+  --primary:#6ea8ff;
+  --accent:#ff7aa6;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Do you like me? 💌</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <h1>A friendly Question</h1>
+      <button id="themeToggle" aria-label="Toggle theme">🌞</button>
+    </header>
+
+    <main>
+      <!-- Name form (validated) -->
+      <section class="card" id="introCard">
+        <h2>Please fill your name here😊</h2>
+        <form id="nameForm" autocomplete="off" novalidate>
+          <input id="nameInput" name="name" type="text" placeholder="Hey, Faith, just write it even though I know😋" aria-label="">
+          <small class="error" id="nameError" aria-live="polite"></small>
+          <div class="row">
+            <button type="submit" class="primary">Okay</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Play area where question and buttons will appear -->
+      <section class="card hidden" id="playCard" aria-live="polite">
+        <!-- Populated by JS -->
+      </section>
+    </main>
+
+    <footer class="footer">
+      <small>Made with ❤️</small>
+    </footer>
+  </div>
+
+  <!-- Heart container for floating hearts -->
+  <div id="heartsContainer" aria-hidden="true"></div>
+</body>
+</html>
